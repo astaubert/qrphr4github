@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  idr: MyString
+  encode: MyString
+
+two:
+  idr: MyString
+  encode: MyString

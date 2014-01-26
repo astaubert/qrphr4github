@@ -1,0 +1,11 @@
+<h1>NOTE ...</h1>
+
+<BR>&nbsp;<BR>
+
+<% @result.errors.full_messages.each do |value| %>
+	<p> <%= value %> </p><br>
+<% end %>
+
+<BR>&nbsp;<BR>&nbsp;<BR>
+
+<%= link_to 'Back', results_path %>

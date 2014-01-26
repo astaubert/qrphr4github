@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<% if notice == "Result was successfully created." %>
+
+	<%= image_tag("qrphrsuccessicon.png", :size => "200x200") %>
+	
+<% end %>
+
+<p>
+  <b>Record created at:</b>
+  <%= localize(@result.created_at, :format => :long) %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @result.patient.first %> <%= @result.patient.last %>
+</p>
+
+<p>&nbsp;</p>
+
+<p>
+  <b>Patient ID:</b>
+  <%= @result.patient_id %>
+</p>
+
+<p>&nbsp;</p>
+
+<p>
+  <b>Decoded - Decrypted:</b><br>
+	<div style="width: 800px; word-break: break-all;">
+  		<%= @result.decode %>
+	</div>
+</p>
+
+<p>
+  <b>Encoded - Encrypted:</b><br>
+	<div style="width: 800px; word-break: break-all;">
+		<%= @result.encode %>
+	</div>
+</p>
+
+
+<p>
+  <b>Elements:</b><br>
+  <% payloadarray = @result.decode.split(/#/) %>           
+  <% payloadarray.each do |value| %>
+  	<%= value %> <br>
+  <% end %>
+</p>
+
+<%= link_to 'Back', results_path %>
+
+<br>&nbsp;<br>

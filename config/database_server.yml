@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: qrstore_development
+  pool: 5
+  username: qrstore
+  password: abbyqr
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: qrstore_test
+  pool: 5
+  username: qrstore
+  password: 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: qrstore_production
+  pool: 5
+  username: qrstore
+  password: 

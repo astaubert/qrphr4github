@@ -1,0 +1,30 @@
+<h1>Listing results</h1>
+
+<br />
+<h5> In order to create a new record, use URL:<br>
+	 http://{domain}/pt/{patient_id}/{aes-encrypted and b64-encoded text} </h5>
+<br />
+
+<table>
+  <tr>
+    <th>Patient ID</th>
+	<th>Name</th>
+    <th>Decoded - Decrypted</th>
+    <th>Created</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+    <td><%= result.patient_id %></td>
+	<td><%= result.patient.first %> <%= result.patient.last %></td>
+    <td><div style="width: 300px; word-break: break-all;">
+		<%= result.decode %>
+	</div></td>
+	<td><%= localize(result.created_at, :format => :long) %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

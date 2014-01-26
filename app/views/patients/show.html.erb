@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Patid:</b>
+  <%= @patient.id %>
+</p>
+
+<p>
+  <b>Key:</b>
+  <%= @patient.key %>
+</p>
+
+<% zeichenliste = @patient.key.scan(/./) %>
+
+<p>
+  <b>Test Data:</b>
+  <%= @patient.test_data %>
+</p>
+<p>
+  <b>First:</b>
+  <%= @patient.first %>
+</p>
+
+<p>
+  <b>Last:</b>
+  <%= @patient.last %>
+</p>
+
+<%
+  require 'base64'
+ 
+  aes = Aes.new('256', 'ecb')
+  key =  @patient.key
+  iv = '0123456789012345'
+ 
+  data = @patient.test_data
+  encrypted = aes.encrypt(data, key, iv)
+  encrypted = encrypted
+  encoded = Base64.urlsafe_encode64(encrypted)
+  decoded = Base64.urlsafe_decode64(encoded)
+  decrypted = aes.decrypt(decoded, key, iv)
+
+%>
+<table>
+  <tbody>
+    <tr>
+      <td>Test Data (ascii):</td>
+      <td><%= data %> length <%= data.length %></td>
+    </tr>
+    <tr>
+      <td>Test Data (hex):</td>
+      <td><%= data.each_byte.map{|b| b.to_s(16)}.join(' ') %></td>
+    </tr>
+    <tr>
+      <td>Key:</td>
+      <td><%= key %></td>
+    </tr>
+    <tr>
+      <td>Encrypted Data:</td>
+      <td><%= encrypted.each_byte.map{|b| b.to_s(16)}.join(' ') %>
+	   </td>
+    </tr>
+    <tr>
+      <td>Base64 Encoded Data:</td>
+      <td><%= Base64.urlsafe_encode64(encrypted) %>
+	   </td>
+    </tr>
+    <tr>
+      <td>Decoded and Decrypted Data:</td>
+      <td><%= decrypted %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>

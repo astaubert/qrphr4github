@@ -3,9 +3,9 @@ qrphr4github
 
 This is a demo electronic health record (EHR)
 
-To be used with: Rails 4.0.0, Ruby 2.0.0 (or higher)
+This software code is to be used with: Rails 4.0.0, Ruby 2.0.0 (or higher)
 
-Methods to be used are:
+Methods available are:
 
 - http://localhost:3000/patients => in order to list and maintain patient demographics
 

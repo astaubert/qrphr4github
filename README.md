@@ -3,7 +3,7 @@ qrphr4github
 
 This is a demo electronic health record (EHR)
 
-Tob used with: Rails 4.0.0, Ruby 2.0.0 (or higher)
+To be used with: Rails 4.0.0, Ruby 2.0.0 (or higher)
 
 Methods to be used are:
 
